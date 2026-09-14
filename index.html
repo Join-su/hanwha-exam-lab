@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08111f" />
+    <title>Exam Lab — LLM Engineering 기출 연습</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="topbar shell">
+      <a class="brand" href="#" aria-label="Exam Lab 홈">
+        <span class="brand-mark">⌁</span>
+        <span>EXAM<span>LAB</span></span>
+      </a>
+      <div class="topbar-meta">
+        <span class="status-dot"></span>
+        <span>2026.09.15 LMS OPEN-BOOK</span>
+      </div>
+      <button class="ghost-button" id="reset-progress">진행 초기화</button>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">HANWHA ICT · LLM ENGINEERING</p>
+          <h1>시험은 검색보다<br /><em>흐름</em>을 기억하는 것.</h1>
+          <p class="hero-description">Wiki의 시험 범위와 수업 흐름을 문제로 바꿨습니다. 개념을 고르는 데서 멈추지 말고, 데이터가 어디서 와서 어디로 가는지 설명해보세요.</p>
+          <div class="hero-actions">
+            <button class="primary-button" id="start-mock">20문제 모의고사 <span>→</span></button>
+            <button class="text-button" id="start-wrong">오답 복습 <span id="wrong-count">0</span></button>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-top"><span>TONIGHT'S DASHBOARD</span><span class="live-pill">LIVE</span></div>
+          <div class="hero-number" id="hero-accuracy">0<span>%</span></div>
+          <p>현재 누적 정답률</p>
+          <div class="hero-card-line"><span>풀이 완료</span><strong id="hero-completed">0 / 48</strong></div>
+          <div class="meter"><span id="hero-meter"></span></div>
+          <div class="hero-card-footer"><span>8개 분야</span><span>48개 문제</span><span>해설 포함</span></div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="sidebar">
+          <div class="section-label">STUDY MAP <span>08</span></div>
+          <nav id="category-nav" aria-label="시험 분야"></nav>
+          <div class="sidebar-note">
+            <span class="note-icon">✦</span>
+            <div><strong>오늘의 기준</strong><p>Wiki를 1차 근거로, 교육 저장소를 해설 보강 자료로 사용합니다.</p></div>
+          </div>
+        </aside>
+
+        <section class="quiz-area" id="quiz-area">
+          <div class="quiz-toolbar">
+            <div><span class="toolbar-kicker" id="mode-label">PYTHON BASICS</span><span class="toolbar-sub" id="mode-sub">기본 문법 · 흐름 추적</span></div>
+            <div class="toolbar-actions"><button class="icon-button" id="prev-question" aria-label="이전 문제">←</button><span id="question-counter">01 / 06</span><button class="icon-button" id="next-question-top" aria-label="다음 문제">→</button></div>
+          </div>
+          <div class="quiz-progress"><span id="quiz-progress-bar"></span></div>
+
+          <article class="question-card" id="question-card">
+            <div class="question-meta"><span class="question-number" id="question-number">Q01</span><span class="difficulty" id="difficulty">WARM-UP</span><span class="question-type" id="question-type">개념 확인</span></div>
+            <h2 id="question-title"></h2>
+            <p class="question-hint" id="question-hint"></p>
+            <pre class="code-block" id="question-code" hidden><code></code></pre>
+            <div class="choices" id="choices"></div>
+            <div class="feedback" id="feedback" hidden></div>
+            <div class="question-footer"><span class="source-label" id="source-label"></span><button class="next-button" id="next-question">정답을 고르면 계속 <span>→</span></button></div>
+          </article>
+        </section>
+      </section>
+
+      <section class="source-strip">
+        <div><span class="source-dot wiki-dot"></span><strong>1차 기준</strong><span>LLM Wiki — 시험 범위·수업 기록·사용자 힌트</span></div>
+        <div><span class="source-dot repo-dot"></span><strong>보조 자료</strong><span>교육 활용 저장소 — 개념 설명·코드 흐름·해설</span></div>
+        <a href="https://github.com/skc4365/site/tree/main/content/book0" target="_blank" rel="noreferrer">자료 열기 ↗</a>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
