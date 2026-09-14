@@ -29,8 +29,13 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--mint); outline-
 .brand-mark { display: grid; place-items: center; width: 26px; height: 26px; background: var(--blue); color: #08111f; border-radius: 8px; font-size: 22px; font-weight: 500; line-height: 1; transform: rotate(-10deg); }
 .topbar-meta { margin-left: auto; display: flex; align-items: center; gap: 8px; color: var(--dim); font: 500 10px/1 "DM Mono", monospace; letter-spacing: .09em; }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 5px rgba(124, 226, 193, .1); }
-.ghost-button { margin-left: 28px; border: 1px solid var(--line); background: transparent; color: var(--muted); padding: 8px 12px; border-radius: 8px; font-size: 11px; cursor: pointer; transition: .2s ease; }
+.topbar-actions { margin-left: 28px; display: flex; align-items: center; gap: 9px; }
+.diagram-link { color: var(--mint); padding: 8px 11px; border-radius: 8px; background: rgba(124,226,193,.08); border: 1px solid rgba(124,226,193,.18); text-decoration: none; font-size: 11px; font-weight: 700; transition: .2s ease; }
+.diagram-link:hover, .diagram-link.active { color: #d9fff2; background: rgba(124,226,193,.14); border-color: rgba(124,226,193,.38); }
+.diagram-link span { margin-left: 5px; }
+.ghost-button { border: 1px solid var(--line); background: transparent; color: var(--muted); padding: 8px 12px; border-radius: 8px; font-size: 11px; cursor: pointer; transition: .2s ease; }
 .ghost-button:hover { color: var(--ink); border-color: rgba(151, 169, 198, .38); }
+.back-link { display: inline-flex; align-items: center; text-decoration: none; }
 .hero { display: grid; grid-template-columns: 1.25fr .75fr; gap: 80px; align-items: end; padding: 82px 0 72px; }
 .eyebrow, .section-label, .toolbar-kicker, .hero-card-top { color: var(--blue); font: 500 10px/1.2 "DM Mono", monospace; letter-spacing: .14em; }
 .eyebrow { margin: 0 0 20px; }
@@ -127,6 +132,25 @@ h1 em { color: var(--mint); font-style: normal; }
 .empty-state { color: var(--muted); text-align: center; padding: 80px 20px; }
 .empty-state h2 { color: var(--ink); font-size: 22px; }
 
+.flow-page { padding: 72px 0 80px; }
+.flow-intro { display: grid; grid-template-columns: 1.08fr .92fr; gap: 72px; align-items: end; margin-bottom: 52px; }
+.flow-intro h1 { font-size: clamp(38px, 5vw, 64px); }
+.flow-intro-copy > p { max-width: 520px; margin: 0 0 22px; color: var(--muted); font-size: 14px; line-height: 1.8; }
+.flow-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.flow-tags span { padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px; color: var(--dim); font: 500 9px "DM Mono", monospace; }
+.diagram-panel { padding: 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); }
+.diagram-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 5px 4px 20px; }
+.diagram-toolbar h2 { margin: 7px 0 0; font-size: 19px; letter-spacing: -.025em; }
+.diagram-original { display: inline-flex; align-items: center; text-decoration: none; white-space: nowrap; }
+.diagram-mobile-hint { display: none; margin: 0 4px 12px; color: var(--dim); font-size: 10px; }
+.diagram-viewport { margin: 0; overflow: auto; border: 1px solid rgba(120,169,255,.15); border-radius: 11px; background: #020617; scrollbar-color: var(--blue) rgba(255,255,255,.06); }
+.diagram-viewport img { display: block; width: 100%; height: auto; }
+.diagram-notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 18px; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: var(--line); }
+.diagram-notes > div { position: relative; min-height: 112px; padding: 19px 18px 16px 50px; background: #0c192b; }
+.diagram-notes span { position: absolute; left: 17px; top: 20px; color: var(--blue); font: 500 10px "DM Mono", monospace; }
+.diagram-notes strong { display: block; color: var(--ink); font-size: 11px; }
+.diagram-notes p { margin: 7px 0 0; color: var(--dim); font-size: 10px; line-height: 1.65; }
+
 @media (max-width: 850px) {
   .shell { width: min(100% - 34px, 680px); }
   .hero { grid-template-columns: 1fr; gap: 35px; padding: 55px 0 45px; }
@@ -138,9 +162,18 @@ h1 em { color: var(--mint); font-style: normal; }
   .question-card { padding: 28px 22px 20px; }
   .source-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .source-strip a { margin-left: 0; }
+  .flow-page { padding-top: 52px; }
+  .flow-intro { grid-template-columns: 1fr; gap: 28px; margin-bottom: 38px; }
+  .diagram-viewport img { width: 1050px; max-width: none; }
+  .diagram-mobile-hint { display: block; }
+  .diagram-notes { grid-template-columns: 1fr; }
+  .diagram-notes > div { min-height: 0; }
 }
 @media (max-width: 520px) {
-  .topbar { min-height: 64px; }.topbar-meta { display: none; }.ghost-button { margin-left: auto; }
+  .topbar { min-height: 64px; }.topbar-meta { display: none; }.topbar-actions { margin-left: auto; }.topbar-actions .ghost-button { display: none; }
+  .flow-body .topbar-actions .diagram-link { display: none; }
+  .flow-body .topbar-actions .ghost-button { display: inline-flex; }
+  .diagram-link { padding: 8px 9px; font-size: 10px; }
   h1 { font-size: 40px; }.hero-description { font-size: 13px; }
   .hero-actions { gap: 14px; }.primary-button { padding: 13px 14px; }
   #category-nav { grid-template-columns: 1fr 1fr; }
@@ -148,4 +181,10 @@ h1 em { color: var(--mint); font-style: normal; }
   .question-card { min-height: 0; }.question-card h2 { font-size: 22px; }
   .question-footer { align-items: flex-end; flex-direction: column; }.next-button { width: 100%; }
   .source-strip { grid-template-columns: 1fr; }
+  .flow-page { padding: 42px 0 55px; }
+  .flow-intro { margin-bottom: 30px; }
+  .flow-intro-copy > p { font-size: 13px; }
+  .diagram-panel { padding: 14px; }
+  .diagram-toolbar { align-items: flex-start; flex-direction: column; gap: 14px; }
+  .diagram-original { width: 100%; justify-content: center; }
 }

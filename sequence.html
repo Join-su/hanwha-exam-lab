@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08111f" />
+    <title>Streamlit ↔ FastAPI 흐름도 — Exam Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="flow-body">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="topbar shell">
+      <a class="brand" href="index.html" aria-label="Exam Lab 홈">
+        <span class="brand-mark">⌁</span>
+        <span>EXAM<span>LAB</span></span>
+      </a>
+      <div class="topbar-meta">
+        <span class="status-dot"></span>
+        <span>SYSTEM FLOW · STUDY GUIDE</span>
+      </div>
+      <div class="topbar-actions">
+        <a class="diagram-link active" href="sequence.html" aria-current="page">연동 흐름도</a>
+        <a class="ghost-button back-link" href="index.html">문제 풀이로 돌아가기</a>
+      </div>
+    </header>
+
+    <main class="shell flow-page">
+      <section class="flow-intro">
+        <div>
+          <p class="eyebrow">STREAMLIT · FASTAPI · PYDANTIC</p>
+          <h1>버튼 클릭부터<br /><em>결과 표시</em>까지.</h1>
+        </div>
+        <div class="flow-intro-copy">
+          <p>사용자 입력이 JSON 요청으로 바뀌고, FastAPI와 Pydantic을 거쳐 다시 Streamlit 화면에 표시되는 전체 흐름입니다.</p>
+          <div class="flow-tags" aria-label="핵심 흐름">
+            <span>01 · UI 입력</span>
+            <span>02 · API 검증</span>
+            <span>03 · 결과 표시</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="diagram-panel" aria-labelledby="diagram-title">
+        <div class="diagram-toolbar">
+          <div>
+            <span class="toolbar-kicker">SEQUENCE DIAGRAM</span>
+            <h2 id="diagram-title">Streamlit → FastAPI → Streamlit</h2>
+          </div>
+          <a class="secondary-button diagram-original" href="streamlit-fastapi-sequence.svg" target="_blank" rel="noreferrer">원본 크기로 열기 ↗</a>
+        </div>
+        <p class="diagram-mobile-hint">작은 화면에서는 그림을 좌우로 밀어 확인할 수 있습니다.</p>
+        <figure class="diagram-viewport">
+          <img src="streamlit-fastapi-sequence.svg" alt="사용자 입력부터 Streamlit, HTTP, FastAPI, Pydantic 검증을 거쳐 결과가 다시 화면에 표시되는 순서도" />
+        </figure>
+        <div class="diagram-notes">
+          <div><span>01</span><strong>Streamlit</strong><p>입력값으로 payload를 만들고 POST 요청을 보냅니다.</p></div>
+          <div><span>02</span><strong>FastAPI + Pydantic</strong><p>라우팅 후 타입을 검증하고 서비스 로직을 실행합니다.</p></div>
+          <div><span>03</span><strong>응답 화면</strong><p>응답 JSON을 읽어 성공 메시지와 결과를 표시합니다.</p></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
