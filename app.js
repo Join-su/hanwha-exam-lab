@@ -81,6 +81,59 @@ const categories = [
   }
 ];
 
+const extraQuestions = {
+  python: [
+    { title: "Python에서 `None`은 무엇을 의미하나요?", choices: ["숫자 0", "빈 문자열", "아직 값이 없음을 나타내는 특별한 값", "항상 거짓인 함수"], answer: 2, explain: "`None`은 값이 없거나 아직 결과가 정해지지 않았음을 표현하는 특별한 객체입니다.", source: "교육 저장소 ch01_python_basics.md", type: "자료형", level: "WARM-UP" },
+    { title: "다음 코드가 출력하는 값은 무엇인가요?", code: "number = 1\nwhile number < 4:\n    number += 1\nprint(number)", choices: ["1", "3", "4", "5"], answer: 2, explain: "number는 1에서 시작해 2, 3, 4가 되고, 4 < 4가 거짓이 되면 반복을 종료합니다.", source: "Wiki 시험 범위 · 교육 저장소 ch01_python_basics.md", type: "흐름 추적", level: "CORE" },
+    { title: "반복문 안에서 `break`를 실행하면 어떻게 되나요?", choices: ["현재 반복문을 즉시 종료한다", "현재 회차만 건너뛴다", "함수 전체를 다시 시작한다", "조건을 항상 참으로 바꾼다"], answer: 0, explain: "`break`는 자신이 포함된 가장 가까운 반복문을 즉시 빠져나옵니다.", source: "교육 저장소 ch01_python_basics.md", type: "제어문", level: "WARM-UP" },
+    { title: "다음 비교식의 결과는 무엇인가요?", code: "result = not (3 > 5)\nprint(result)", choices: ["None", "False", "3", "True"], answer: 3, explain: "3 > 5는 False이고, `not False`는 True입니다.", source: "교육 저장소 ch01_python_basics.md", type: "코드 결과", level: "CORE" }
+  ],
+  data: [
+    { title: "Python 객체를 JSON 문자열로 직렬화할 때 사용하는 함수는 무엇인가요?", choices: ["json.loads()", "json.dumps()", "json.open()", "dict.json()"], answer: 1, explain: "`json.dumps()`는 Python 객체를 JSON 문자열로 만들고, `json.loads()`는 JSON 문자열을 Python 객체로 읽습니다.", source: "사용자 시험 힌트 · 교육 저장소 ch01/ch07", type: "데이터 전송", level: "CORE" },
+    { title: "다음 코드 실행 후 `items`의 값은 무엇인가요?", code: "items = [1, 2]\nitems.append(3)", choices: ["[3, 1, 2]", "[1, 2]", "[1, 2, 3]", "3"], answer: 2, explain: "`append()`는 리스트의 마지막에 요소 하나를 추가합니다.", source: "교육 저장소 ch01_python_basics.md", type: "코드 결과", level: "WARM-UP" },
+    { title: "NumPy 배열 `values[1]`이 가리키는 값은 무엇인가요?", code: "values = np.array([10, 20, 30])", choices: ["10", "20", "30", "오류"], answer: 1, explain: "Python과 NumPy의 인덱스는 0부터 시작하므로 인덱스 1의 값은 20입니다.", source: "사용자 시험 힌트 · 교육 저장소 NumPy 예제", type: "배열 인덱싱", level: "WARM-UP" },
+    { title: "시간이 지날수록 선이 계속 위로 올라가는 그래프가 가장 직접적으로 표현하는 것은 무엇인가요?", code: "요청 수\n  ↑          ╱\n  │       ╱\n  │    ╱\n  └────────→ 시간", choices: ["요청 수가 시간에 따라 증가한다", "요청 수가 일정하다", "시간이 거꾸로 흐른다", "자료형이 문자열로 변한다"], answer: 0, explain: "x축이 시간, y축이 요청 수이고 선이 상승하므로 시간에 따른 요청 증가를 나타냅니다.", source: "사용자 시험 힌트 · 그래프 의미 해석", type: "그래프 해석", level: "MUST KNOW" }
+  ],
+  core: [
+    { title: "클래스의 `__init__` 메서드는 언제 주로 실행되나요?", choices: ["모듈을 삭제할 때", "인스턴스를 생성할 때 초기 상태를 설정한다", "예외가 발생할 때만", "JSON을 전송할 때"], answer: 1, explain: "`__init__`은 클래스의 인스턴스가 만들어질 때 속성 등 초기 상태를 설정합니다.", source: "교육 저장소 ch02_python_core.md", type: "클래스", level: "WARM-UP" },
+    { title: "상속의 대표적인 목적은 무엇인가요?", choices: ["부모 클래스의 속성과 동작을 재사용·확장한다", "모든 메서드를 숨긴다", "HTTP 요청을 병렬화한다", "로그 파일을 삭제한다"], answer: 0, explain: "상속은 기존 클래스의 공통 동작을 이어받아 새로운 클래스에서 확장할 때 사용합니다.", source: "Wiki 학습 정리 · 교육 저장소 Python 객체지향", type: "클래스", level: "CORE" },
+    { title: "`raise ValueError(\"본문을 입력하세요\")`의 역할은 무엇인가요?", choices: ["경고만 출력하고 계속 실행한다", "ValueError 예외를 명시적으로 발생시킨다", "문자열을 반환한다", "로그 수준을 바꾼다"], answer: 1, explain: "`raise`는 유효하지 않은 상태를 발견했을 때 지정한 예외를 직접 발생시킵니다.", source: "교육 저장소 ch02_python_core.md", type: "예외 처리", level: "CORE" },
+    { title: "`try / except / else`에서 `else` 블록은 언제 실행되나요?", choices: ["항상 먼저 실행된다", "예외가 발생했을 때만", "try 블록에서 예외가 발생하지 않았을 때", "finally 다음에만"], answer: 2, explain: "`else`는 try 블록이 예외 없이 정상 완료된 경우 실행됩니다.", source: "교육 저장소 ch02_python_core.md", type: "예외 처리", level: "TRICKY" }
+  ],
+  async: [
+    { title: "`async def fetch()`로 만든 함수를 호출만 하고 `await`하지 않으면 무엇을 얻나요?", choices: ["완료된 문자열", "코루틴 객체", "항상 None", "새 프로세스"], answer: 1, explain: "비동기 함수를 호출하면 코루틴 객체가 만들어지며 실제 결과를 받으려면 await하거나 이벤트 루프에 등록해야 합니다.", source: "교육 저장소 ch03_asyncio.md", type: "코루틴", level: "TRICKY" },
+    { title: "동시성(concurrency)을 가장 잘 설명한 것은 무엇인가요?", choices: ["여러 작업의 진행 시간을 겹쳐 관리하는 것", "하나의 값만 저장하는 것", "CPU 코어를 반드시 하나 더 만드는 것", "모든 함수를 데코레이터로 감싸는 것"], answer: 0, explain: "동시성은 여러 작업이 진행 중인 상태를 관리하는 개념입니다. 반드시 물리적으로 같은 순간에 계산한다는 뜻은 아닙니다.", source: "교육 저장소 ch03_asyncio.md", type: "개념 비교", level: "CORE" },
+    { title: "외부 API 응답을 무한정 기다리지 않도록 설정하는 것은 무엇인가요?", choices: ["timeout", "inheritance", "serialization", "slicing"], answer: 0, explain: "timeout은 정해진 시간 안에 작업이 끝나지 않을 때 대기를 중단하도록 합니다.", source: "교육 저장소 ch03_asyncio.md", type: "운영 개념", level: "CORE" },
+    { title: "`asyncio.gather()`의 대표적인 용도는 무엇인가요?", choices: ["여러 awaitable을 함께 실행하고 결과를 모은다", "Pydantic 모델을 만든다", "HTTP 경로를 등록한다", "코드를 동기 함수로 바꾼다"], answer: 0, explain: "gather는 여러 비동기 작업을 함께 스케줄하고 완료 결과를 모을 때 사용합니다.", source: "교육 저장소 ch03_asyncio.md", type: "API 확인", level: "CORE" }
+  ],
+  pydantic: [
+    { title: "`Field(ge=10, le=200)`이 표현하는 검증 규칙은 무엇인가요?", choices: ["문자열 길이가 정확히 10", "값이 10 이상 200 이하", "리스트 요소가 200개", "값이 10 또는 200만 가능"], answer: 1, explain: "`ge`는 greater than or equal, `le`는 less than or equal을 뜻합니다.", source: "교육 저장소 ch04_pydantic.md", type: "필드 검증", level: "CORE" },
+    { title: "Pydantic의 `field_validator`는 언제 사용하나요?", choices: ["필드에 사용자 정의 검증 규칙을 적용할 때", "FastAPI 서버를 실행할 때", "HTML을 렌더링할 때", "Git 커밋을 만들 때"], answer: 0, explain: "기본 타입·범위 검증만으로 부족할 때 field_validator에 도메인 규칙을 작성할 수 있습니다.", source: "교육 저장소 ch04_pydantic.md", type: "사용자 검증", level: "CORE" },
+    { title: "Pydantic의 strict 검증을 사용하는 목적은 무엇인가요?", choices: ["가능한 값을 무조건 문자열로 바꾼다", "느슨한 자동 형변환을 제한하고 정확한 타입을 요구한다", "응답을 스트리밍한다", "모델 필드를 숨긴다"], answer: 1, explain: "strict 모드는 예를 들어 문자열 숫자를 정수로 자동 변환하는 동작을 제한해 타입 경계를 엄격하게 만듭니다.", source: "교육 저장소 ch04_pydantic_도입배경.md", type: "검증 방식", level: "TRICKY" },
+    { title: "FastAPI 요청 본문이 Pydantic 규칙을 통과하지 못했을 때 일반적인 상태 코드는 무엇인가요?", choices: ["200", "201", "404", "422"], answer: 3, explain: "FastAPI는 요청 데이터 검증 실패를 일반적으로 422 Unprocessable Entity 응답으로 알려줍니다.", source: "Wiki 요청 흐름 · 교육 저장소 ch04/ch05", type: "API 오류", level: "CORE" }
+  ],
+  fastapi: [
+    { title: "`/users/{user_id}`의 `user_id`는 어떤 종류의 매개변수인가요?", choices: ["Request body", "Path parameter", "Header only", "Response model"], answer: 1, explain: "URL 경로 자체에 포함된 값은 path parameter입니다.", source: "교육 저장소 ch05_fastapi_rest.md", type: "REST 설계", level: "WARM-UP" },
+    { title: "`/search?keyword=rag`의 `keyword`는 어떤 종류의 매개변수인가요?", choices: ["Path parameter", "Query parameter", "Cookie만", "클래스 속성"], answer: 1, explain: "물음표 뒤에 `key=value` 형태로 붙는 값은 query parameter입니다.", source: "교육 저장소 ch05_fastapi_rest.md", type: "REST 설계", level: "WARM-UP" },
+    { title: "요청한 리소스를 찾을 수 없을 때 사용하는 대표적인 HTTP 상태 코드는 무엇인가요?", choices: ["201", "204", "404", "500만 가능"], answer: 2, explain: "404 Not Found는 요청한 경로나 리소스를 찾지 못했음을 나타냅니다.", source: "교육 저장소 ch05_fastapi_rest.md", type: "상태 코드", level: "WARM-UP" },
+    { title: "FastAPI에서 의도한 오류 응답을 만들 때 사용하는 것은 무엇인가요?", choices: ["HTTPException", "ValidationLoop", "StreamlitError", "AsyncRouteStop"], answer: 0, explain: "`HTTPException(status_code=..., detail=...)`으로 API 사용자가 이해할 수 있는 오류 응답을 만듭니다.", source: "교육 저장소 ch05_fastapi_rest.md", type: "오류 처리", level: "CORE" }
+  ],
+  fullstack: [
+    { title: "Streamlit에서 FastAPI를 비동기로 호출할 때 사용할 수 있는 HTTP 클라이언트는 무엇인가요?", choices: ["httpx.AsyncClient", "Pydantic.Field", "logging.Logger만", "numpy.ndarray"], answer: 0, explain: "교육 자료는 비동기 HTTP Client를 이용해 UI에서 FastAPI로 요청하는 흐름을 다룹니다.", source: "교육 저장소 ch06_fastapi_streamlit.md", type: "연동 코드", level: "CORE" },
+    { title: "Streamlit에서 버튼을 누르거나 입력값이 바뀌면 기본적으로 어떤 일이 일어나나요?", choices: ["Python 스크립트가 위에서 아래로 다시 실행된다", "FastAPI 서버가 삭제된다", "GitHub에 자동 push된다", "브라우저가 항상 종료된다"], answer: 0, explain: "Streamlit은 상호작용이 발생하면 스크립트를 다시 실행하고 화면을 갱신합니다.", source: "교육 저장소 ch08_streamlit.md", type: "동작 구조", level: "MUST KNOW" },
+    { title: "FastAPI Middleware의 대표적인 역할은 무엇인가요?", choices: ["모든 요청과 응답의 공통 전후 처리를 수행한다", "특정 리스트에 값 하나를 추가한다", "LLM을 재학습한다", "Streamlit 위젯을 만든다"], answer: 0, explain: "Middleware는 요청 시간 측정, 공통 로그, 헤더 처리처럼 여러 경로에 공통인 처리를 담당합니다.", source: "교육 저장소 ch06_fastapi_streamlit.md", type: "심화 기능", level: "CORE" },
+    { title: "FastAPI `BackgroundTasks`가 적합한 예시는 무엇인가요?", choices: ["응답 후 짧은 감사 로그를 남기는 작업", "응답 전에 반드시 끝나야 하는 입력 검증", "브라우저에서 버튼을 그리는 작업", "CPU 집약 장기 학습을 무조건 실행하는 작업"], answer: 0, explain: "BackgroundTasks는 응답을 보낸 뒤 실행해도 되는 짧은 후처리 작업에 적합합니다.", source: "교육 저장소 ch06_fastapi_streamlit.md", type: "심화 기능", level: "CORE" }
+  ],
+  rag: [
+    { title: "RAG 체인에서 `invoke`의 역할을 가장 잘 설명한 것은 무엇인가요?", choices: ["완성된 입력을 체인이나 모델에 한 번 전달하고 최종 응답을 받는다", "토큰을 하나씩 화면에만 표시한다", "문서를 영구 삭제한다", "검색 점수를 logprob로 바꾼다"], answer: 0, explain: "invoke는 검색과 Context 구성을 거친 입력을 한 번 호출해 완성된 결과를 받는 방식으로 설명할 수 있습니다.", source: "Wiki 시험 추정 · invoke/logprob/stream", type: "RAG 호출", level: "MUST KNOW" },
+    { title: "RAG 응답의 `stream` 방식은 무엇인가요?", choices: ["완성된 응답만 한 번에 받는다", "생성되는 응답 조각을 순차적으로 받아 표시한다", "검색 문서를 모두 다운로드한다", "Vector Store를 초기화한다"], answer: 1, explain: "stream은 전체 생성이 끝날 때까지 기다리지 않고 토큰 또는 메시지 조각을 순차적으로 받는 방식입니다.", source: "Wiki 시험 추정 · 교육 저장소 ch18_RAG_LLM_모델호출.md", type: "RAG 호출", level: "MUST KNOW" },
+    { title: "`logprob`과 검색 문서 관련도 점수의 관계로 올바른 것은 무엇인가요?", choices: ["항상 같은 값이다", "둘 다 HTTP 상태 코드다", "logprob은 토큰 선택 확률의 단서이고 검색 관련도 점수와는 다르다", "logprob은 문서 파일 크기다"], answer: 2, explain: "logprob은 모델이 토큰을 선택한 로그 확률 정보입니다. Retriever가 계산하는 문서 관련도와는 다른 계층의 값입니다.", source: "Wiki 시험 범위 · invoke/logprob/stream 정리", type: "개념 비교", level: "TRICKY" },
+    { title: "RAG Harness에서 프롬프트 인젝션을 줄이기 위한 방법으로 가장 적절한 것은 무엇인가요?", choices: ["검색 문서 안의 모든 지시를 시스템 명령처럼 따른다", "신뢰 경계를 두고 문서 내용을 데이터로 취급하며 출력·도구 호출을 검증한다", "Context를 무조건 비운다", "정답 여부와 관계없이 첫 출력을 사용한다"], answer: 1, explain: "검색 문서는 신뢰할 수 없는 지시를 포함할 수 있습니다. 문서를 근거 데이터로 제한하고 실행과 출력을 검증하는 것이 Harness의 보안 역할 중 하나입니다.", source: "Wiki 사용자 시험 추정 · 하네스와 프롬프트 인젝션", type: "보안", level: "MUST KNOW" }
+  ]
+};
+
+categories.forEach(category => category.questions.push(...extraQuestions[category.id]));
+
 const allQuestions = categories.flatMap(category => category.questions.map((question, index) => ({ ...question, id: `${category.id}-${index + 1}`, categoryId: category.id, categoryTitle: category.title, index })));
 const storageKey = "exam-lab-progress-v1";
 const saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
@@ -90,6 +143,7 @@ const state = {
   list: [],
   index: 0,
   selected: null,
+  choiceOrders: {},
   attempts: saved.attempts || {},
   wrong: new Set(saved.wrong || [])
 };
@@ -97,7 +151,35 @@ const state = {
 const $ = selector => document.querySelector(selector);
 const categoryById = id => categories.find(category => category.id === id);
 const getListForCategory = id => allQuestions.filter(question => question.categoryId === id);
-const shuffle = array => [...array].sort(() => Math.random() - .5);
+function shuffle(array) {
+  const copy = [...array];
+  for (let index = copy.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
+  }
+  return copy;
+}
+
+function createChoiceOrder(question, correctPosition) {
+  const distractors = shuffle(question.choices.map((_, index) => index).filter(index => index !== question.answer));
+  const order = [];
+  for (let position = 0; position < question.choices.length; position += 1) {
+    order.push(position === correctPosition ? question.answer : distractors.shift());
+  }
+  return order;
+}
+
+function prepareChoiceOrders(list) {
+  const offset = Math.floor(Math.random() * 4);
+  return Object.fromEntries(list.map((question, index) => [
+    question.id,
+    createChoiceOrder(question, (index + offset) % question.choices.length)
+  ]));
+}
+
+function getChoiceOrder(question) {
+  return state.choiceOrders[question.id] || question.choices.map((_, index) => index);
+}
 
 function persist() {
   localStorage.setItem(storageKey, JSON.stringify({ attempts: state.attempts, wrong: [...state.wrong] }));
@@ -126,6 +208,7 @@ function setList(list, mode, categoryId = null) {
   state.categoryId = categoryId;
   state.index = 0;
   state.selected = null;
+  state.choiceOrders = prepareChoiceOrders(list);
   renderCategoryNav();
   renderQuestion();
 }
@@ -192,12 +275,14 @@ function renderQuestion() {
 
 function renderChoices(question) {
   const letters = ["A", "B", "C", "D", "E"];
-  $("#choices").innerHTML = question.choices.map((choice, index) => {
+  const order = getChoiceOrder(question);
+  $("#choices").innerHTML = order.map((choiceIndex, displayIndex) => {
+    const choice = question.choices[choiceIndex];
     const picked = state.selected !== null;
     const classes = ["choice"];
-    if (picked && index === question.answer) classes.push("correct");
-    if (picked && index === state.selected && index !== question.answer) classes.push("incorrect");
-    return `<button class="${classes.join(" ")}" data-choice="${index}" ${picked ? "disabled" : ""}><span class="choice-letter">${letters[index]}</span><span>${choice}</span></button>`;
+    if (picked && choiceIndex === question.answer) classes.push("correct");
+    if (picked && choiceIndex === state.selected && choiceIndex !== question.answer) classes.push("incorrect");
+    return `<button class="${classes.join(" ")}" data-choice="${choiceIndex}" ${picked ? "disabled" : ""}><span class="choice-letter">${letters[displayIndex]}</span><span>${choice}</span></button>`;
   }).join("");
   document.querySelectorAll("[data-choice]").forEach(button => button.addEventListener("click", () => choose(Number(button.dataset.choice))));
 }
@@ -207,9 +292,10 @@ function renderFeedback(question) {
   const next = $("#next-question");
   if (state.selected === null) { feedback.hidden = true; next.classList.remove("ready"); next.textContent = "정답을 고르면 계속 →"; return; }
   const isCorrect = state.selected === question.answer;
+  const correctPosition = getChoiceOrder(question).indexOf(question.answer);
   feedback.hidden = false;
   feedback.className = `feedback ${isCorrect ? "" : "incorrect"}`;
-  feedback.innerHTML = `<strong>${isCorrect ? "정답입니다 · 흐름을 잡았어요" : `아쉬워요 · 정답은 ${String.fromCharCode(65 + question.answer)}번`}</strong>${question.explain}`;
+  feedback.innerHTML = `<strong>${isCorrect ? "정답입니다 · 흐름을 잡았어요" : `아쉬워요 · 정답은 ${String.fromCharCode(65 + correctPosition)}번`}</strong>${question.explain}`;
   next.classList.add("ready");
   next.textContent = state.index === state.list.length - 1 ? "결과 보기 →" : "다음 문제 →";
 }
